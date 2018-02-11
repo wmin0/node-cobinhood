@@ -1,6 +1,7 @@
 const EventEmitter = require('events');
 const API = require('./lib/restful')
 const WS = require('./lib/ws')
+const Decimal = require('decimal.js')
 
 class Client extends EventEmitter {
   constructor(key = '') {
@@ -11,68 +12,90 @@ class Client extends EventEmitter {
     this.cache = {}
   }
   listOrders() {
-    return this.api.trading.listOrders()
+    return this.api.listOrders()
   }
   listTradingPairs() {
     if (this.cache.tradingPairs) {
       return Promise.resolve(this.cache.tradingPairs)
     }
     return (
-      this.api.market.listTradingPairs()
+      this.api.listTradingPairs()
       .then((pairs) => this.cache.tradingPairs = pairs)
     )
   }
   placeLimitOrder(pair, side, price, size) {
-    return this.api.trading.placeOrder(pair, 'limit', side, price, size)
+    return this.api.placeLimitOrder(pair, side, price, size)
   }
   placeMarketOrder(pair, side, size) {
-    return this.api.trading.placeOrder(pair, 'market', side, '0', size)
+    return this.api.placeMarketOrder(pair, side, size)
   }
   cancelOrder(id) {
-    return this.api.trading.cancelOrder(id)
+    return this.api.cancelOrder(id)
   }
   getOrder(id) {
-    return this.api.trading.getOrder(id)
+    return this.api.getOrder(id)
   }
   modifyOrder(id, pair, price, size) {
-    return this.api.trading.modifyOrder(id, pair, price, size)
+    return this.api.modifyOrder(id, pair, price, size)
   }
   getBalance() {
-    return this.api.wallet.getBalance()
+    return this.api.getBalance()
   }
-  subscribeOrder() {
-    return this.ws.subscribe({
-      type: 'order'
-    })
+  subscribeOrder(fn) {
+    return this.ws.subscribeOrder({}, fn)
   }
-  subscribeTicker(pair) {
-    return this.ws.subscribe({
-      type: 'ticker',
+  unsubscribeOrder(fn) {
+    return this.ws.unsubscribeOrder({}, fn)
+  }
+  subscribeTicker(pair, fn) {
+    return this.ws.subscribeTicker({
       trading_pair_id: pair
-    })
+    }, fn)
   }
-  subscribeTrade(pair) {
-    return this.ws.subscribe({
-      type: 'trade',
+  unsubscribeTicker(pair, fn) {
+    return this.ws.unsubscribeTicker({
       trading_pair_id: pair
-    })
+    }, fn)
   }
-  subscribeOrderbook(pair, precision) {
-    return this.ws.subscribe({
-      type: 'order-book',
+  subscribeTrade(pair, fn) {
+    return this.ws.subscribeTrade({
+      trading_pair_id: pair
+    }, fn)
+  }
+  unsubscribeTrade(pair, fn) {
+    return this.ws.unsubscribeTrade({
+      trading_pair_id: pair
+    }, fn)
+  }
+  subscribeOrderbook(pair, precision, fn) {
+    if (precision instanceof Decimal) {
+      precision = precision.toExponential().toUpperCase()
+    }
+    return this.ws.subscribeOrderbook({
       trading_pair_id: pair,
       precision: precision
-    })
+    }, fn)
   }
-  subscribeCandle(pair, timeframe) {
-    return this.ws.subscribe({
-      type: 'candle',
+  unsubscribeOrderbook(pair, precision, fn) {
+    if (precision instanceof Decimal) {
+      precision = precision.toExponential().toUpperCase()
+    }
+    return this.ws.unsubscribeOrderbook({
+      trading_pair_id: pair,
+      precision: precision
+    }, fn)
+  }
+  subscribeCandle(pair, timeframe, fn) {
+    return this.ws.subscribeCandle({
       trading_pair_id: pair,
       timeframe: timeframe,
-    })
+    }, fn)
   }
-  unsubscribe(channel) {
-    return this.ws.unsubscribe(channel)
+  unsubscribeCandle(pair, timeframe, fn) {
+    return this.ws.unsubscribeCandle({
+      trading_pair_id: pair,
+      timeframe: timeframe,
+    }, fn)
   }
   close() {
     this.ws.close()
