@@ -16,6 +16,14 @@ let client = new Client(`your api key`)
 
 Then you can access cobinhood exchange throgh RESTFUL API or Websocket.
 
+## Disable Websocket
+If you don't want to connect ws, specify in constructor.
+
+```javascript
+const Client = require('cobinhood', true)
+let client = new Client(`your api key`)
+```
+
 ## RESTFUL API
 You can access cobinhood exchange with such client method below.
 RESTFUL API will returns a promise object.
@@ -41,10 +49,16 @@ RESTFUL API will returns a promise object.
 - price: price, string or decimal object
 - size: size, string or decimal object
 * getBalance()
+* getOrderbook(pair, precision)
+- pair: trading pair
+- precision: trading pair support precision, for example new Decimal("1e-7") or "1E-7"
+* listTrades(pair)
+- pair: trading pair
 
 ## Websocket
-Upon client created, websocket is connecting.
-Client provides some websocket events, so you can listen events to know the situation.
+Upon client created, websocket is connecting, so you should call client close if you don't need it.
+Client provides some websocket events.
+You can listen events to know the situation.
 
 ### Events
 * open
@@ -68,7 +82,7 @@ Subscription function will returns a promise object.
 - fn: callback function
 * subscribeOrderbook(pair, precision, fn)
 - pair: trading pair, for example "COB-ETH"
-- precision: trading pair support precision, for example new Decimal("1e-8") or "1E-8"
+- precision: trading pair support precision, for example new Decimal("1e-7") or "1E-7"
 - fn: callback function
 * subscribeCandle(pair, timeframe, fn)
 - pair: trading pair, for example "COB-ETH"

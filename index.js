@@ -4,11 +4,13 @@ const WS = require('./lib/ws')
 const Decimal = require('decimal.js')
 
 class Client extends EventEmitter {
-  constructor(key = '') {
+  constructor(key = '', disableWS = false) {
     super()
     this.key = key
     this.api = new API(this)
-    this.ws = new WS(this)
+    if (!disableWS) {
+      this.ws = new WS(this)
+    }
     this.cache = {}
   }
   listOrders() {
@@ -41,33 +43,63 @@ class Client extends EventEmitter {
   getBalance() {
     return this.api.getBalance()
   }
+  getOrderbook(pair, precision) {
+    if (precision instanceof Decimal) {
+      precision = precision.toExponential().toUpperCase()
+    }
+    return this.api.getOrderbook(pair, precision)
+  }
+  listTrades(pair) {
+    return this.api.listTrades(pair)
+  }
   subscribeOrder(fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
     return this.ws.subscribeOrder({}, fn)
   }
   unsubscribeOrder(fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
     return this.ws.unsubscribeOrder({}, fn)
   }
   subscribeTicker(pair, fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
     return this.ws.subscribeTicker({
       trading_pair_id: pair
     }, fn)
   }
   unsubscribeTicker(pair, fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
     return this.ws.unsubscribeTicker({
       trading_pair_id: pair
     }, fn)
   }
   subscribeTrade(pair, fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
     return this.ws.subscribeTrade({
       trading_pair_id: pair
     }, fn)
   }
   unsubscribeTrade(pair, fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
     return this.ws.unsubscribeTrade({
       trading_pair_id: pair
     }, fn)
   }
   subscribeOrderbook(pair, precision, fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
     if (precision instanceof Decimal) {
       precision = precision.toExponential().toUpperCase()
     }
@@ -77,6 +109,9 @@ class Client extends EventEmitter {
     }, fn)
   }
   unsubscribeOrderbook(pair, precision, fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
     if (precision instanceof Decimal) {
       precision = precision.toExponential().toUpperCase()
     }
@@ -86,18 +121,27 @@ class Client extends EventEmitter {
     }, fn)
   }
   subscribeCandle(pair, timeframe, fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
     return this.ws.subscribeCandle({
       trading_pair_id: pair,
       timeframe: timeframe,
     }, fn)
   }
   unsubscribeCandle(pair, timeframe, fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
     return this.ws.unsubscribeCandle({
       trading_pair_id: pair,
       timeframe: timeframe,
     }, fn)
   }
   close() {
+    if (!this.ws) {
+      return
+    }
     this.ws.close()
   }
 }
