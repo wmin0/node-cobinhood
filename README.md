@@ -1,5 +1,5 @@
 # Node-Cobinhood
-node-cobinhood is a nodejs api wrapper of cobinhood restful api and websocket.
+node-cobinhood is a nodejs api wrapper of [cobinhood](https://cobinhood.com) restful api and websocket.
 node-cobinhood provides an easier way to access cobinhood exchange.
 
 # Getting Started
@@ -10,7 +10,7 @@ Put your api key in one of example and try it!
 With api key, you can create a client with following code.
 
 ```javascript
-const Client = require('cobinhood')
+const Client = require('node-cobinhood')
 let client = new Client(`your api key`)
 ```
 
