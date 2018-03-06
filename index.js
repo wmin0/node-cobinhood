@@ -13,6 +13,12 @@ class Client extends EventEmitter {
     }
     this.cache = {}
   }
+  getTicker(pair) {
+    return this.api.getTicker(pair)
+  }
+  getCandles(pair, start, end, timeframe) {
+    return this.api.getCandles(pair, start, end, timeframe)
+  }
   listOrders() {
     return this.api.listOrders()
   }

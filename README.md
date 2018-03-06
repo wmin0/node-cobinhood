@@ -24,6 +24,27 @@ const Client = require('cobinhood')
 let client = new Client(`your api key`, true)
 ```
 
+## Enums
+* order side
+  - bid
+  - ask
+* order type
+  - limit
+  - market
+* candle timeframe
+  - 1m
+  - 5m
+  - 15m
+  - 30m
+  - 1h
+  - 3h
+  - 6h
+  - 12h
+  - 1D
+  - 7D
+  - 14D
+  - 1M
+
 ## RESTFUL API
 You can access cobinhood exchange with such client method below.
 RESTFUL API will returns a promise object.
@@ -54,6 +75,13 @@ RESTFUL API will returns a promise object.
   - precision: trading pair support precision, for example new Decimal("1e-7") or "1E-7"
 * listTrades(pair)
   - pair: trading pair
+* getTicker(pair)
+  - pair: trading pair
+* getTimeframe(pair, start, end, timeframe)
+  - pair: trading pair
+  - start: start time, need Date object
+  - end: end time, need Date object
+  - timeframe: candle timeframe, for example "1h", "15m"
 
 ## Websocket
 Upon client created, websocket is connecting, so you should call client close if you don't need it.
