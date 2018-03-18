@@ -4,11 +4,11 @@ const WS = require('./lib/ws')
 const Decimal = require('decimal.js')
 
 class Client extends EventEmitter {
-  constructor(key = '', disableWS = false) {
+  constructor(opts = {}) {
     super()
-    this.key = key
+    this.key = opts.key
     this.api = new API(this)
-    if (!disableWS) {
+    if (!opts.disableWS) {
       this.ws = new WS(this)
     }
     this.cache = {}

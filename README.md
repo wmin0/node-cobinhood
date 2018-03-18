@@ -11,7 +11,7 @@ With api key, you can create a client with following code.
 
 ```javascript
 const Client = require('node-cobinhood')
-let client = new Client(`your api key`)
+let client = new Client({ key: `your api key` })
 ```
 
 Then you can access cobinhood exchange throgh RESTFUL API or Websocket.
@@ -21,7 +21,7 @@ If you don't want to connect ws, specify in constructor.
 
 ```javascript
 const Client = require('cobinhood')
-let client = new Client(`your api key`, true)
+let client = new Client({ key: `your api key`, disableWS: true })
 ```
 
 ## Enums

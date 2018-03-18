@@ -1,7 +1,7 @@
 const key = `your key here`
 
 const Client = require('../')
-let client = new Client(key)
+let client = new Client({ key: key })
 
 let end = new Date()
 let start = new Date(end.valueOf() - 3600000)

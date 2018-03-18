@@ -1,7 +1,7 @@
 const key = `your key here`
 
 const Client = require('../')
-let client = new Client(key)
+let client = new Client({ key: key })
 client.on('open', () => {
   console.error('open')
   client.subscribeOrder((msg) => console.log('on msg', msg))
