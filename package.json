@@ -17,6 +17,7 @@
   "author": "wmin0",
   "license": "ISC",
   "dependencies": {
+    "debug": "^3.1.0",
     "decimal.js": "^9.0.1",
     "request": "^2.83.0",
     "ws": "^4.0.0"
