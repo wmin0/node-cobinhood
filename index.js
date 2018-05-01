@@ -37,6 +37,12 @@ class Client extends EventEmitter {
   placeMarketOrder(pair, side, size) {
     return this.api.placeMarketOrder(pair, side, size)
   }
+  placeLimitStopOrder(pair, side, price, size, stopPrice) {
+    return this.api.placeLimitStopOrder(pair, side, price, size, stopPrice)
+  }
+  placeMarketStopOrder(pair, side, size, stopPrice) {
+    return this.api.placeMarketStopOrder(pair, side, size, stopPrice)
+  }
   cancelOrder(id) {
     return this.api.cancelOrder(id)
   }

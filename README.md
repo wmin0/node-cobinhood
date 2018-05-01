@@ -31,6 +31,8 @@ let client = new Client({ key: `your api key`, disableWS: true })
 * order type
   - limit
   - market
+  - limit_stop
+  - market_stop
 * candle timeframe
   - 1m
   - 5m
@@ -60,6 +62,17 @@ RESTFUL API will returns a promise object.
   - pair: trading pair
   - side: "bid" or "ask"
   - size: size, string or decimal object
+* placeLimitStopOrder(pair, side, price, size, stopPrice)
+  - pair trading pair
+  - side: "bid" or "ask"
+  - price: price string or decimal object
+  - size: size, string or decimal object
+  - stopPrice: stop price, string or decimal, object
+* placeMarketStopOrder(pair, side, size, stopPrice)
+  - pair: trading pair
+  - side: "bid" or "ask"
+  - size: size, string or decimal object
+  - stopPrice: stop price, string or decimal, object
 * cancelOrder(id)
   - id: order id
 * getOrder(id)
