@@ -58,6 +58,12 @@ class Client extends EventEmitter {
   getOrderbook(pair, limit) {
     return this.api.getOrderbook(pair, limit)
   }
+  getTradeHistory(pair, limit = 20, page = 0) {
+    return this.api.getTradeHistory(pair, limit, page)
+  }
+  getTradesOfOrder(id) {
+    return this.api.getTradesOfOrder(id)
+  }
   listTrades(pair) {
     return this.api.listTrades(pair)
   }
