@@ -55,11 +55,14 @@ class Client extends EventEmitter {
   getBalance() {
     return this.api.getBalance()
   }
-  getOrderbook(pair, precision) {
-    if (precision instanceof Decimal) {
-      precision = precision.toExponential().toUpperCase()
-    }
-    return this.api.getOrderbook(pair, precision)
+  getOrderbook(pair, limit) {
+    return this.api.getOrderbook(pair, limit)
+  }
+  getTradeHistory(pair, limit = 20, page = 0) {
+    return this.api.getTradeHistory(pair, limit, page)
+  }
+  getTradesOfOrder(id) {
+    return this.api.getTradesOfOrder(id)
   }
   listTrades(pair) {
     return this.api.listTrades(pair)

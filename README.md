@@ -83,9 +83,9 @@ RESTFUL API will returns a promise object.
   - price: price, string or decimal object
   - size: size, string or decimal object
 * getBalance()
-* getOrderbook(pair, precision)
+* getOrderbook(pair, limit)
   - pair: trading pair
-  - precision: trading pair support precision, for example new Decimal("1e-7") or "1E-7"
+  - limit: limits number of entries of asks/bids list, beginning from the best price for both sides
 * listTrades(pair)
   - pair: trading pair
 * getTicker(pair)
@@ -95,6 +95,12 @@ RESTFUL API will returns a promise object.
   - start: start time, need Date object
   - end: end time, need Date object
   - timeframe: candle timeframe, for example "1h", "15m"
+* getTradeHistory(pair, limit, page)
+  - pair: trading pair
+  - limit: limits number of trades per page
+  - page: pagination
+* getTradesOfOrder(id)
+  - id: order id
 
 ## Websocket
 Upon client created, websocket is connecting, so you should call client close if you don't need it.
