@@ -96,7 +96,7 @@ RESTFUL API will returns a promise object.
   - start: start time, need Date object
   - end: end time, need Date object
   - timeframe: candle timeframe, for example "1h", "15m"
-* getTradeHistory(pair, limit, page)
+* getTradesHistory(pair, limit, page)
   - pair: trading pair
   - limit: limits number of trades per page
   - page: pagination
