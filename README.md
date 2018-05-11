@@ -83,8 +83,9 @@ RESTFUL API will returns a promise object.
   - price: price, string or decimal object
   - size: size, string or decimal object
 * getBalance()
-* getOrderbook(pair, limit)
+* getOrderbook(pair, precision, limit)
   - pair: trading pair
+  - precision: trading pair support precision, for example new Decimal("1e-7") or "1E-7"
   - limit: limits number of entries of asks/bids list, beginning from the best price for both sides
 * listTrades(pair)
   - pair: trading pair
