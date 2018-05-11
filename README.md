@@ -1,4 +1,6 @@
-# Node-Cobinhood
+[![NPM](https://nodei.co/npm/node-cobinhood.png?compact=true)](https://npmjs.org/package/node-cobinhood)
+
+# Node-Cobinhood [![NPM downloads](https://img.shields.io/npm/dt/node-cobinhood.svg?style=flat-square&maxAge=86400)](https://www.npmjs.com/package/node-cobinhood)
 node-cobinhood is a nodejs api wrapper of [cobinhood](https://cobinhood.com) restful api and websocket.
 node-cobinhood provides an easier way to access cobinhood exchange.
 
