@@ -13,3 +13,4 @@ client.on('open', () => {
     client.close()
   })
 })
+client.on('error', (msg) => console.error('on error', msg))

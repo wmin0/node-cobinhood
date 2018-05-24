@@ -121,8 +121,6 @@ You can listen events to know the situation.
   - When websocket reconnecting, it will be fired.
 * reconnected
   - When websocket reconnected, it will be fired.
-* msg.error
-  - When websocket received error msg, it will be fired.
 
 ### Subscribes
 You can subscribe websocket update with such client method below.
