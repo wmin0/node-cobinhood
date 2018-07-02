@@ -31,11 +31,11 @@ class Client extends EventEmitter {
       .then((pairs) => this.cache.tradingPairs = pairs)
     )
   }
-  placeLimitOrder(pair, side, price, size) {
-    return this.api.placeLimitOrder(pair, side, price, size)
+  placeLimitOrder(pair, side, price, size, source) {
+    return this.api.placeLimitOrder(pair, side, price, size, source)
   }
-  placeMarketOrder(pair, side, size) {
-    return this.api.placeMarketOrder(pair, side, size)
+  placeMarketOrder(pair, side, size, source) {
+    return this.api.placeMarketOrder(pair, side, size, source)
   }
   placeLimitStopOrder(pair, side, price, size, stopPrice) {
     return this.api.placeLimitStopOrder(pair, side, price, size, stopPrice)
@@ -51,6 +51,18 @@ class Client extends EventEmitter {
   }
   modifyOrder(id, pair, price, size) {
     return this.api.modifyOrder(id, pair, price, size)
+  }
+  listPositions() {
+    return this.api.listPositions()
+  }
+  getPosition(pair) {
+    return this.api.getPosition(pair)
+  }
+  closePosition(pair) {
+    return this.api.closePosition(pair)
+  }
+  claimPosition(pair) {
+    return this.api.claimPosition(pair)
   }
   getBalance() {
     return this.api.getBalance()
