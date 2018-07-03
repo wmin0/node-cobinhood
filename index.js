@@ -61,8 +61,8 @@ class Client extends EventEmitter {
   closePosition(pair) {
     return this.api.closePosition(pair)
   }
-  claimPosition(pair) {
-    return this.api.claimPosition(pair)
+  claimPosition(pair, size) {
+    return this.api.claimPosition(pair, size)
   }
   getBalance() {
     return this.api.getBalance()

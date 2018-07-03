@@ -104,6 +104,29 @@ RESTFUL API will returns a promise object.
   - page: pagination
 * getTradesOfOrder(id)
   - id: order id
+* listPositions()
+* getPosition(pair)
+  - pair: trading pair
+* closePosition(pair)
+  - pair: trading pair
+* claimPosition(pair, size)
+  - pair: trading pair
+  - size: size, must be positive, string or decimal object
+* listFundings()
+* getFunding(id)
+  - id: funding id
+* placeLimitFunding(currency, side, interestRate, period)
+  - currency: currency
+  - side: "bid" or "ask"
+  - interestRate: daily interest rate(%), string or decimal object
+  - period: bid / ask days (2 ~ 30)
+* cancelFunding(id)
+  - id: funding id
+* listLoans()
+* getLoan(id)
+  - id: loan id
+* closeLoan(id)
+  - id: loan id
 
 ## Websocket
 Upon client created, websocket is connecting, so you should call client close if you don't need it.
