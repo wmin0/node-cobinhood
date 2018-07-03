@@ -82,6 +82,27 @@ class Client extends EventEmitter {
   listTrades(pair) {
     return this.api.listTrades(pair)
   }
+  listFundings() {
+    return this.api.listFundings()
+  }
+  getFunding(id) {
+    return this.api.getFunding(id)
+  }
+  placeLimitFunding(currency, side, interestRate, period) {
+    return this.api.placeLimitFunding(currency, side, interestRate, period)
+  }
+  cancelFunding(id) {
+    return this.api.cancelFunding(id)
+  }
+  listLoans() {
+    return this.api.listLoans()
+  }
+  getLoan(id) {
+    return this.api.getLoan(id)
+  }
+  closeLoan(id) {
+    return this.api.closeLoan(id)
+  }
   subscribeOrder(fn) {
     if (!this.ws) {
       return Promise.reject('no ws')
