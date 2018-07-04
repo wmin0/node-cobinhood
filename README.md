@@ -35,6 +35,10 @@ let client = new Client({ key: `your api key`, disableWS: true })
   - market
   - limit_stop
   - market_stop
+* ledger type
+  - exchange
+  - margin
+  - funding
 * candle timeframe
   - 1m
   - 5m
@@ -85,6 +89,11 @@ RESTFUL API will returns a promise object.
   - price: price, string or decimal object
   - size: size, string or decimal object
 * getBalance()
+* transferBalance(currency, from, to, amount)
+  - currency: currency
+  - from: balance ledger type, for example "exchange", "margin"
+  - to: balance ledger type, for example "exchange", "margin"
+  - amount: amount, string or decimal object
 * getOrderbook(pair, precision, limit)
   - pair: trading pair
   - precision: trading pair support precision, for example new Decimal("1e-7") or "1E-7"

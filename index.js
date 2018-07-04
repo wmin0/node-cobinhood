@@ -67,6 +67,9 @@ class Client extends EventEmitter {
   getBalance() {
     return this.api.getBalance()
   }
+  transferBalance(currency, from, to, amount) {
+    return this.api.transferBalance(currency, from, to, amount)
+  }
   getOrderbook(pair, precision, limit = 0) {
     if (precision instanceof Decimal) {
       precision = precision.toExponential().toUpperCase()
