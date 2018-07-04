@@ -91,8 +91,8 @@ class Client extends EventEmitter {
   getFunding(id) {
     return this.api.getFunding(id)
   }
-  placeLimitFunding(currency, side, interestRate, period) {
-    return this.api.placeLimitFunding(currency, side, interestRate, period)
+  placeLimitFunding(currency, side, interestRate, period, size) {
+    return this.api.placeLimitFunding(currency, side, interestRate, period, size)
   }
   cancelFunding(id) {
     return this.api.cancelFunding(id)

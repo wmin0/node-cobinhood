@@ -124,11 +124,12 @@ RESTFUL API will returns a promise object.
 * listFundings()
 * getFunding(id)
   - id: funding id
-* placeLimitFunding(currency, side, interestRate, period)
+* placeLimitFunding(currency, side, interestRate, period, size)
   - currency: currency
   - side: "bid" or "ask"
   - interestRate: daily interest rate(%), string or decimal object
   - period: bid / ask days (2 ~ 30)
+  - size: size, string or decimal object
 * cancelFunding(id)
   - id: funding id
 * listLoans()
