@@ -1,6 +1,6 @@
 {
   "name": "node-cobinhood",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "nodejs cobinhood api client",
   "main": "index.js",
   "scripts": {
