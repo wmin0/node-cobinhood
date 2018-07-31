@@ -22,7 +22,7 @@ Then you can access cobinhood exchange throgh RESTFUL API or Websocket.
 If you don't want to connect ws, specify in constructor.
 
 ```javascript
-const Client = require('cobinhood')
+const Client = require('node-cobinhood')
 let client = new Client({ key: `your api key`, disableWS: true })
 ```
 
