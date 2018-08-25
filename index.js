@@ -250,6 +250,38 @@ class Client extends EventEmitter {
       currency_id: currency
     }, fn)
   }
+  subscribePublicLoan(currency, fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
+    return this.ws.subscribePublicLoan({
+      currency_id: currency
+    }, fn)
+  }
+  unsubscribePublicLoan(currency, fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
+    return this.ws.unsubscribePublicLoan({
+      currency_id: currency
+    }, fn)
+  }
+  subscribeAuthLoan(currency, fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
+    return this.ws.subscribeAuthLoan({
+      currency_id: currency
+    }, fn)
+  }
+  unsubscribeAuthLoan(currency, fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
+    return this.ws.unsubscribeAuthLoan({
+      currency_id: currency
+    }, fn)
+  }
   close() {
     if (!this.ws) {
       return

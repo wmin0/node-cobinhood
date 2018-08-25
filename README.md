@@ -189,3 +189,9 @@ Subscription function will returns a promise object.
 * subscribeLoanTicker(currency, fn)
   - currency: currency, for example "USDT"
   - fn: callback function
+* subscribePublicLoan(currency, fn)
+  - currency: currency, for example "USDT"
+  - fn: callback function
+* subscribeAuthLoan(currency, fn)
+  - currency: currency, for example "USDT"
+  - fn: callback function
