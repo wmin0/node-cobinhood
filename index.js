@@ -31,6 +31,15 @@ class Client extends EventEmitter {
       .then((pairs) => this.cache.tradingPairs = pairs)
     )
   }
+  listCurrencies() {
+    if (this.cache.currencies) {
+      return Promise.resolve(this.cache.currencies)
+    }
+    return (
+      this.api.listCurrencies()
+      .then((currencies) => this.cache.currencies = currencies)
+    )
+  }
   placeLimitOrder(pair, side, price, size, source) {
     return this.api.placeLimitOrder(pair, side, price, size, source)
   }

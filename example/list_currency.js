@@ -1,0 +1,5 @@
+const Client = require('../')
+let client = new Client()
+client.listCurrencies()
+.then(console.log, console.error)
+.then(() => client.close())
