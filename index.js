@@ -192,6 +192,30 @@ class Client extends EventEmitter {
       precision: precision
     }, fn)
   }
+  subscribeFundingbook(currency, precision, fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
+    if (precision instanceof Decimal) {
+      precision = precision.toExponential().toUpperCase()
+    }
+    return this.ws.subscribeFundingbook({
+      currency_id: currency,
+      precision: precision
+    }, fn)
+  }
+  unsubscribeFundingbook(currency, precision, fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
+    if (precision instanceof Decimal) {
+      precision = precision.toExponential().toUpperCase()
+    }
+    return this.ws.unsubscribeFundingbook({
+      currency_id: currency,
+      precision: precision
+    }, fn)
+  }
   subscribeCandle(pair, timeframe, fn) {
     if (!this.ws) {
       return Promise.reject('no ws')
