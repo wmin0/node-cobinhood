@@ -100,6 +100,9 @@ class Client extends EventEmitter {
     }
     return this.api.getFundingbook(currency, precision, limit)
   }
+  getLoanTicker(currency) {
+    return this.api.getLoanTicker(currency)
+  }
   listFundings() {
     return this.api.listFundings()
   }

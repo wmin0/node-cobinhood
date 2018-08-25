@@ -126,6 +126,8 @@ RESTFUL API will returns a promise object.
   - currency: currency
   - precision: currency support precision, for example new Decimal("1e-7") or "1E-7"
   - limit: limits number of entries of asks/bids list, beginning from the best price for both sides
+* getLoanTicker(currency)
+  - currency: currency
 * listFundings()
 * getFunding(id)
   - id: funding id
