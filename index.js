@@ -282,6 +282,18 @@ class Client extends EventEmitter {
       currency_id: currency
     }, fn)
   }
+  subscribeFunding(fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
+    return this.ws.subscribeFunding({}, fn)
+  }
+  unsubscribeFunding(fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
+    return this.ws.unsubscribeFunding({}, fn)
+  }
   close() {
     if (!this.ws) {
       return

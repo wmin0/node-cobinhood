@@ -195,3 +195,5 @@ Subscription function will returns a promise object.
 * subscribeAuthLoan(currency, fn)
   - currency: currency, for example "USDT"
   - fn: callback function
+* subscribeFunding(fn)
+  - fn: callback function
