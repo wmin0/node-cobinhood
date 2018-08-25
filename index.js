@@ -152,6 +152,25 @@ class Client extends EventEmitter {
       trading_pair_id: pair
     }, fn)
   }
+  subscribeCandle(pair, timeframe, fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
+    return this.ws.subscribeCandle({
+      trading_pair_id: pair,
+      timeframe: timeframe,
+    }, fn)
+  }
+  unsubscribeCandle(pair, timeframe, fn) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
+    return this.ws.unsubscribeCandle({
+      trading_pair_id: pair,
+      timeframe: timeframe,
+    }, fn)
+  }
+
   subscribeTrade(pair, fn) {
     if (!this.ws) {
       return Promise.reject('no ws')
@@ -216,22 +235,20 @@ class Client extends EventEmitter {
       precision: precision
     }, fn)
   }
-  subscribeCandle(pair, timeframe, fn) {
+  subscribeLoanTicker(currency, fn) {
     if (!this.ws) {
       return Promise.reject('no ws')
     }
-    return this.ws.subscribeCandle({
-      trading_pair_id: pair,
-      timeframe: timeframe,
+    return this.ws.subscribeLoanTicker({
+      currency_id: currency
     }, fn)
   }
-  unsubscribeCandle(pair, timeframe, fn) {
+  unsubscribeLoanTicker(currency, fn) {
     if (!this.ws) {
       return Promise.reject('no ws')
     }
-    return this.ws.unsubscribeCandle({
-      trading_pair_id: pair,
-      timeframe: timeframe,
+    return this.ws.unsubscribeTicker({
+      currency_id: currency
     }, fn)
   }
   close() {
