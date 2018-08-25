@@ -170,20 +170,19 @@ class Client extends EventEmitter {
       timeframe: timeframe,
     }, fn)
   }
-
-  subscribeTrade(pair, fn) {
+  subscribePublicTrade(pair, fn) {
     if (!this.ws) {
       return Promise.reject('no ws')
     }
-    return this.ws.subscribeTrade({
+    return this.ws.subscribePublicTrade({
       trading_pair_id: pair
     }, fn)
   }
-  unsubscribeTrade(pair, fn) {
+  unsubscribePublicTrade(pair, fn) {
     if (!this.ws) {
       return Promise.reject('no ws')
     }
-    return this.ws.unsubscribeTrade({
+    return this.ws.unsubscribePublicTrade({
       trading_pair_id: pair
     }, fn)
   }

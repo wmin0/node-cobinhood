@@ -171,7 +171,7 @@ Subscription function will returns a promise object.
 * subscribeTicker(pair, fn)
   - pair: trading pair, for example "COB-ETH"
   - fn: callback function
-* subscribeTrade(pair, fn)
+* subscribePublicTrade(pair, fn)
   - pair: trading pair, for example "COB-ETH"
   - fn: callback function
 * subscribeOrderbook(pair, precision, fn)
