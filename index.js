@@ -94,6 +94,12 @@ class Client extends EventEmitter {
   listTrades(pair) {
     return this.api.listTrades(pair)
   }
+  getFundingbook(currency, precision, limit = 0) {
+    if (precision instanceof Decimal) {
+      precision = precision.toExponential().toUpperCase()
+    }
+    return this.api.getFundingbook(currency, precision, limit)
+  }
   listFundings() {
     return this.api.listFundings()
   }

@@ -122,6 +122,10 @@ RESTFUL API will returns a promise object.
 * claimPosition(pair, size)
   - pair: trading pair
   - size: size, must be positive, string or decimal object
+* getFundingbook(currency, precision, limit)
+  - currency: currency
+  - precision: currency support precision, for example new Decimal("1e-7") or "1E-7"
+  - limit: limits number of entries of asks/bids list, beginning from the best price for both sides
 * listFundings()
 * getFunding(id)
   - id: funding id
