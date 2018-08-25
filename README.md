@@ -182,3 +182,10 @@ Subscription function will returns a promise object.
   - pair: trading pair, for example "COB-ETH"
   - timeframe: candle timeframe, for example "1h", "15m"
   - fn: callback function
+* subscribeFundingbook(currency, precision, fn)
+  - currency: currency, for example "USDT"
+  - precision: currency support precision, for example new Decimal("1e-7") or "1E-7"
+  - fn: callback function
+* subscribeLoanTicker(currency, fn)
+  - currency: currency, for example "USDT"
+  - fn: callback function
