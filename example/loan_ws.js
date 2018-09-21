@@ -4,7 +4,7 @@ const Client = require('../')
 let client = new Client({ key: key })
 client.on('open', () => {
   console.error('open')
-  client.subscribeAuthLoan('USDT', (msg) => console.log('on msg', msg))
+  client.subscribePublicLoan('USDT', (msg) => console.log('on msg', msg))
   .then(() => {
     console.error('subscribe')
   })
