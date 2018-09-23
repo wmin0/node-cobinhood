@@ -40,6 +40,42 @@ class Client extends EventEmitter {
       .then((currencies) => this.cache.currencies = currencies)
     )
   }
+  listOrderbookPrecisions(pair) {
+    let cachedPair
+    if (this.cache.tradingPairs) {
+      cachedPair = this.cache.tradingPairs.find((t) => t.id === pair)
+    }
+    if (cachedPair && cachedPair.precisions) {
+      return cachedPair.precisions
+    }
+    return (
+      this.api.listOrderbookPrecisions(pair)
+      .then((precisions) => {
+        if (cachedPair) {
+          cachedPair.precisions = precisions
+        }
+        return precisions
+      })
+    )
+  }
+  listFundingbookPrecisions(currency) {
+    let cachedCurrency
+    if (this.cache.currencies) {
+      cachedCurrency = this.cache.currencies.find((c) => c.id === currency)
+    }
+    if (cachedCurrency && cachedCurrency.precisions) {
+      return cachedCurrency.precisions
+    }
+    return (
+      this.api.listFundingbookPrecisions(currency)
+      .then((precisions) => {
+        if (cachedCurrency) {
+          cachedCurrency.precisions = precisions
+        }
+        return precisions
+      })
+    )
+  }
   placeLimitOrder(pair, side, price, size, source) {
     return this.api.placeLimitOrder(pair, side, price, size, source)
   }

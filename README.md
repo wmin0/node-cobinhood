@@ -60,6 +60,10 @@ RESTFUL API will returns a promise object.
 * listOrders()
 * listTradingPairs()
 * listCurrencies()
+* listOrderbookPrecisions(pair)
+  - pair: trading pair
+* listFundingbookPrecisions(currency)
+  - currency: currency
 * placeLimitOrder(pair, side, price, size)
   - pair: trading pair
   - side: "bid" or "ask"
