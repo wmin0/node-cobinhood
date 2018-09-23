@@ -64,35 +64,38 @@ RESTFUL API will returns a promise object.
   - pair: trading pair
 * listFundingbookPrecisions(currency)
   - currency: currency
-* placeLimitOrder(pair, side, price, size)
+* placeLimitOrder(pair, side, price, size, source)
   - pair: trading pair
   - side: "bid" or "ask"
   - price: price, string or decimal object
   - size: size, string or decimal object
-* placeMarketOrder(pair, side, size)
+  - source: "exchange" or "margin"
+* placeMarketOrder(pair, side, size, source)
   - pair: trading pair
   - side: "bid" or "ask"
   - size: size, string or decimal object
-* placeLimitStopOrder(pair, side, price, size, stopPrice)
+  - source: "exchange" or "margin"
+* placeLimitStopOrder(pair, side, price, size, stopPrice, source)
   - pair trading pair
   - side: "bid" or "ask"
   - price: price string or decimal object
   - size: size, string or decimal object
   - stopPrice: stop price, string or decimal object
-* placeMarketStopOrder(pair, side, size, stopPrice)
+  - source: "exchange" or "margin"
+* placeMarketStopOrder(pair, side, size, stopPrice, source)
   - pair: trading pair
   - side: "bid" or "ask"
   - size: size, string or decimal object
   - stopPrice: stop price, string or decimal object
+  - source: "exchange" or "margin"
 * cancelOrder(id)
   - id: order id
-* getOrder(id)
+* modifyOrder(id, price, size)
   - id: order id
-* modifyOrder(id, pair, price, size)
-  - id: order id
-  - pair: trading pair
   - price: price, string or decimal object
   - size: size, string or decimal object
+* getOrder(id)
+  - id: order id
 * getBalance()
 * transferBalance(currency, from, to, amount)
   - currency: currency
@@ -201,3 +204,38 @@ Subscription function will returns a promise object.
   - fn: callback function
 * subscribeFunding(fn)
   - fn: callback function
+
+### Trading
+You can also trade with websocket.
+The api is almost same with restful version but response is same with websocket update.
+
+* placeLimitOrderWS(pair, side, price, size, source)
+  - pair: trading pair
+  - side: "bid" or "ask"
+  - price: price, string or decimal object
+  - size: size, string or decimal object
+  - source: "exchange" or "margin"
+* placeMarketOrderWS(pair, side, size, source)
+  - pair: trading pair
+  - side: "bid" or "ask"
+  - size: size, string or decimal object
+  - source: "exchange" or "margin"
+* placeLimitStopOrderWS(pair, side, price, size, stopPrice, source)
+  - pair trading pair
+  - side: "bid" or "ask"
+  - price: price string or decimal object
+  - size: size, string or decimal object
+  - stopPrice: stop price, string or decimal object
+  - source: "exchange" or "margin"
+* placeMarketStopOrderWS(pair, side, size, stopPrice, source)
+  - pair: trading pair
+  - side: "bid" or "ask"
+  - size: size, string or decimal object
+  - stopPrice: stop price, string or decimal object
+  - source: "exchange" or "margin"
+* cancelOrderWS(id)
+  - id: order id
+* modifyOrderWS(id, price, size)
+  - id: order id
+  - price: price, string or decimal object
+  - size: size, string or decimal object

@@ -91,11 +91,47 @@ class Client extends EventEmitter {
   cancelOrder(id) {
     return this.api.cancelOrder(id)
   }
+  modifyOrder(id, price, size) {
+    return this.api.modifyOrder(id, price, size)
+  }
+  placeLimitOrderWS(pair, side, price, size, source) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
+    return this.ws.placeLimitOrder(pair, side, price, size, source)
+  }
+  placeMarketOrderWS(pair, side, size, source) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
+    return this.ws.placeMarketOrder(pair, side, size, source)
+  }
+  placeLimitStopOrderWS(pair, side, price, size, stopPrice) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
+    return this.ws.placeLimitStopOrder(pair, side, price, size, stopPrice)
+  }
+  placeMarketStopOrderWS(pair, side, size, stopPrice) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
+    return this.ws.placeMarketStopOrder(pair, side, size, stopPrice)
+  }
+  cancelOrderWS(id) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
+    return this.ws.cancelOrder(id)
+  }
+  modifyOrderWS(id, price, size) {
+    if (!this.ws) {
+      return Promise.reject('no ws')
+    }
+    return this.ws.modifyOrder(id, price, size)
+  }
   getOrder(id) {
     return this.api.getOrder(id)
-  }
-  modifyOrder(id, pair, price, size) {
-    return this.api.modifyOrder(id, pair, price, size)
   }
   listPositions() {
     return this.api.listPositions()
