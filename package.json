@@ -19,7 +19,7 @@
   "dependencies": {
     "debug": "^3.1.0",
     "decimal.js": "^9.0.1",
-    "request": "^2.86.0",
+    "request": "^2.88.0",
     "ws": "^4.1.0"
   }
 }
